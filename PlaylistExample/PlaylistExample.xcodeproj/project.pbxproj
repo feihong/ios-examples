@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A756B1841C45F9540053B246 /* PlaylistController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A756B1831C45F9540053B246 /* PlaylistController.swift */; };
 		A7D5AA611C45A681006FC8F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D5AA601C45A681006FC8F9 /* AppDelegate.swift */; };
 		A7D5AA631C45A681006FC8F9 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D5AA621C45A681006FC8F9 /* MainController.swift */; };
 		A7D5AA661C45A681006FC8F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7D5AA641C45A681006FC8F9 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A756B1831C45F9540053B246 /* PlaylistController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistController.swift; sourceTree = "<group>"; };
 		A7D5AA5D1C45A681006FC8F9 /* PlaylistExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaylistExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D5AA601C45A681006FC8F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7D5AA621C45A681006FC8F9 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				A7D5AA601C45A681006FC8F9 /* AppDelegate.swift */,
 				A7D5AA621C45A681006FC8F9 /* MainController.swift */,
+				A756B1831C45F9540053B246 /* PlaylistController.swift */,
 				A7D5AA641C45A681006FC8F9 /* Main.storyboard */,
 				A7D5AA671C45A681006FC8F9 /* Assets.xcassets */,
 				A7D5AA691C45A681006FC8F9 /* LaunchScreen.storyboard */,
@@ -258,6 +261,7 @@
 			files = (
 				A7D5AA631C45A681006FC8F9 /* MainController.swift in Sources */,
 				A7D5AA611C45A681006FC8F9 /* AppDelegate.swift in Sources */,
+				A756B1841C45F9540053B246 /* PlaylistController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
