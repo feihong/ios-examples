@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Main Controller-->
+        <!--Playlists-->
         <scene sceneID="VCO-IP-bty">
             <objects>
-                <tableViewController id="RpP-RF-gNj" customClass="MainController" customModule="PlaylistExample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Playlists" id="RpP-RF-gNj" customClass="MainController" customModule="PlaylistExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qd5-HO-oaW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,16 +47,16 @@
                             <outlet property="delegate" destination="RpP-RF-gNj" id="zlW-4o-J5R"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ylW-dB-sUv"/>
+                    <navigationItem key="navigationItem" title="Playlists" id="ylW-dB-sUv"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bK4-he-Wrv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1033" y="418"/>
         </scene>
-        <!--Playlist Controller-->
+        <!--Songs-->
         <scene sceneID="5An-e6-SKc">
             <objects>
-                <tableViewController id="XGS-Jz-gxz" customClass="PlaylistController" customModule="PlaylistExample" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Songs" id="XGS-Jz-gxz" customClass="PlaylistController" customModule="PlaylistExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7io-wG-vcb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

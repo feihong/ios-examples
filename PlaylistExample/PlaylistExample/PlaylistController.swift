@@ -14,17 +14,20 @@ class PlaylistController: UITableViewController {
         Song(title: "Sloths Rule the World", artist: "Mr Bumtastic"),
         Song(title: "Starkiller Beams Destroy the Republic", artist: "Lord Snokes"),
     ]
-    var playlistId = ""
+    var playlist = Playlist(id: "", name: "", count: 0) {
+        didSet {
+            navigationItem.title = playlist.name
+        }
+    }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         populateSongs()
     }
 
     func populateSongs() {
         // You have to convert back to NSNumber in order to search by playlist ID.
-        let playlistNumber = NSNumber(unsignedLongLong: UInt64(playlistId)!)
+        let playlistNumber = NSNumber(unsignedLongLong: UInt64(playlist.id)!)
 
         let query = MPMediaQuery.playlistsQuery()
         let hasId = MPMediaPropertyPredicate(
@@ -34,10 +37,21 @@ class PlaylistController: UITableViewController {
         query.addFilterPredicate(hasId)
         guard let result = query.collections else {return}
         
-        let playlist = result[0]
-        printSongs(playlist)
+        if result.count == 0 {
+            let ac = UIAlertController(
+                title: "Error",
+                message: "No playlist with ID \(playlist.id) was found (\(playlist.name))",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            ac.addAction(
+                UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(ac, animated: true, completion: nil)
+            return
+        }
         
-        songs = playlist.items.map { song in
+        let mpPlaylist = result[0]
+        printSongs(mpPlaylist)
+        
+        songs = mpPlaylist.items.map { song in
             return Song(
                 title: song.valueForProperty(MPMediaItemPropertyTitle) as! String,
                 artist: song.valueForProperty(MPMediaItemPropertyArtist) as! String)

@@ -16,8 +16,7 @@ class MainController: UITableViewController {
     ]
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        super.viewDidLoad()        
         printPlaylists()
         populatePlaylists()
     }
@@ -50,13 +49,12 @@ class MainController: UITableViewController {
         return cell
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowPlaylist" {
             if let row = tableView.indexPathForSelectedRow?.row {
                 let playlist = playlists[row]
                 let vc = segue.destinationViewController as! PlaylistController
-                vc.playlistId = playlist.id
+                vc.playlist = playlist
             }
         }
     }
@@ -67,13 +65,8 @@ func printPlaylists() {
     guard let result = query.collections else {return}
     print("Number of playlists: ", result.count)
     for playlist in result {
-        let id = playlist.valueForProperty(MPMediaPlaylistPropertyPersistentID)!
-        let num = id as! NSNumber
-        let idString = "\(id)"
+        let id = playlist.valueForProperty(MPMediaPlaylistPropertyPersistentID) as! NSNumber
         let name = playlist.valueForProperty(MPMediaPlaylistPropertyName) as! String
-        if name == "Potluck" {
-            print(id)
-        }
         print("\(id): \(name), \(playlist.count)")
     }
 }
