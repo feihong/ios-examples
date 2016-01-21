@@ -2,19 +2,14 @@ import UIKit
 import MediaPlayer
 
 
-struct Song {
-    var title: String
-    var artist: String
-}
-
-
+// Displays the tracks within a Playlist.
 class PlaylistController: UITableViewController {
-    var songs: [Song] = [
-        Song(title: "Break Free", artist: "Shanaynay"),
-        Song(title: "Sloths Rule the World", artist: "Mr Bumtastic"),
-        Song(title: "Starkiller Beams Destroy the Republic", artist: "Lord Snokes"),
+    var tracks: [TrackBase] = [
+        TrackStub(title: "Break Free", artist: "Shanaynay"),
+        TrackStub(title: "Sloths Rule the World", artist: "Mr Bumtastic"),
+        TrackStub(title: "Starkiller Beams Destroy the Republic", artist: "Lord Snokes"),
     ]
-    var playlist = Playlist(id: "", name: "", count: 0) {
+    var playlist: PlaylistBase = PlaylistStub(id: "", name: "", count: 0) {
         didSet {
             navigationItem.title = playlist.name
         }
@@ -22,10 +17,10 @@ class PlaylistController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()        
-        populateSongs()
+        populateTracks()
     }
 
-    func populateSongs() {
+    func populateTracks() {
         // You have to convert back to NSNumber in order to search by playlist ID.
         let playlistNumber = NSNumber(unsignedLongLong: UInt64(playlist.id)!)
 
@@ -51,25 +46,22 @@ class PlaylistController: UITableViewController {
         let mpPlaylist = result[0]
         printSongs(mpPlaylist)
         
-        songs = mpPlaylist.items.map { song in
-            return Song(
-                title: song.valueForProperty(MPMediaItemPropertyTitle) as! String,
-                artist: song.valueForProperty(MPMediaItemPropertyArtist) as! String)
+        tracks = mpPlaylist.items.map { item in
+            return Track(item: item)
         }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+        return tracks.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .Value2, reuseIdentifier: "SongCell")
         let cell = tableView.dequeueReusableCellWithIdentifier(
-            "SongTableViewCell", forIndexPath: indexPath)
+            "TrackTableViewCell", forIndexPath: indexPath)
         
-        let song = songs[indexPath.row]
-        cell.textLabel?.text = song.title
-        cell.detailTextLabel?.text = song.artist
+        let track = tracks[indexPath.row]
+        cell.textLabel?.text = track.title
+        cell.detailTextLabel?.text = track.artist
         return cell
     }
 
@@ -77,8 +69,8 @@ class PlaylistController: UITableViewController {
 
 func printSongs(playlist: MPMediaItemCollection) {
     for song in playlist.items {
-        let title = song.valueForProperty(MPMediaItemPropertyTitle)!
-        let artist = song.valueForProperty(MPMediaItemPropertyArtist)!
+        let title = (song.valueForProperty(MPMediaItemPropertyTitle) ?? "N/A") as! String
+        let artist = (song.valueForProperty(MPMediaItemPropertyArtist) ?? "N/A") as! String
         print("\(title) | \(artist)")
     }
 }

@@ -2,17 +2,12 @@ import UIKit
 import MediaPlayer
 
 
-struct Playlist {
-    var id: String
-    var name: String
-    var count: Int
-}
-
+// Displays all Playlists.
 class MainController: UITableViewController {
-    var playlists: [Playlist] = [
-        Playlist(id: "1", name: "Disco Party", count: 55),
-        Playlist(id: "2", name: "Chill Muzak", count: 23),
-        Playlist(id: "3", name: "Driving", count: 146),
+    var playlists: [PlaylistBase] = [
+        PlaylistStub(id: "1", name: "Disco Party", count: 55),
+        PlaylistStub(id: "2", name: "Chill Muzak", count: 23),
+        PlaylistStub(id: "3", name: "Driving", count: 146),
     ]
 
     override func viewDidLoad() {
@@ -25,11 +20,8 @@ class MainController: UITableViewController {
         let query = MPMediaQuery.playlistsQuery()
         guard let result = query.collections else {return}
         
-        playlists = result.map { playlist in
-            return Playlist(
-                id: "\(playlist.valueForProperty(MPMediaPlaylistPropertyPersistentID)!)",
-                name: playlist.valueForProperty(MPMediaPlaylistPropertyName) as! String,
-                count: playlist.count)
+        playlists = result.map { item in
+            return Playlist(item: item)
         }
     }
     
@@ -38,7 +30,6 @@ class MainController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .Value1, reuseIdentifier: "PlaylistCell")
         let cell = tableView.dequeueReusableCellWithIdentifier(
             "PlaylistTableViewCell", forIndexPath: indexPath)
         
