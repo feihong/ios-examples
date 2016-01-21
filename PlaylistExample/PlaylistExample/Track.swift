@@ -1,18 +1,18 @@
 import MediaPlayer
 
-protocol TrackBase {
+protocol Track {
 //    var id: String {get}
     var title: String {get}
     var artist: String {get}
 }
 
-struct TrackStub : TrackBase {
+struct TrackStub : Track {
 //    var id: String
     var title: String
     var artist: String
 }
 
-struct Track : TrackBase {
+struct MediaTrack : Track {
     var id: String {
         return "\(item.valueForProperty(MPMediaItemPropertyPersistentID)!)"
     }

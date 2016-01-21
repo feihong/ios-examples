@@ -14,3 +14,14 @@ let url = mediaItem.valuevalueForProperty(MPMediaItemPropertyAssetURL) as! NSURL
 let asset = AVURLAsset(URL: url, options: nil)
 let lyrics = asset.lyrics
 ```
+
+## Relevant media item property keys
+
+- MPMediaItemPropertyArtwork
+- MPMediaItemPropertyTitle
+- MPMediaItemPropertyArtist
+- MPMediaItemPropertyAlbumTitle
+- MPMediaItemPropertyGenre
+- MPMediaItemPropertyPlaybackDuration
+- MPMediaItemPropertyComments
+- MPMediaItemPropertyLyrics

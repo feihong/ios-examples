@@ -4,7 +4,7 @@ import MediaPlayer
 
 // Displays the tracks within a Playlist.
 class PlaylistController: UITableViewController {
-    var tracks: [TrackBase] = [
+    var tracks: [Track] = [
         TrackStub(title: "Break Free", artist: "Shanaynay"),
         TrackStub(title: "Sloths Rule the World", artist: "Mr Bumtastic"),
         TrackStub(title: "Starkiller Beams Destroy the Republic", artist: "Lord Snokes"),
@@ -47,7 +47,7 @@ class PlaylistController: UITableViewController {
         printSongs(mpPlaylist)
         
         tracks = mpPlaylist.items.map { item in
-            return Track(item: item)
+            return MediaTrack(item: item)
         }
     }
 
@@ -65,6 +65,15 @@ class PlaylistController: UITableViewController {
         return cell
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowTrack" {
+            if let row = tableView.indexPathForSelectedRow?.row {
+                let track = tracks[row]
+                let vc = segue.destinationViewController as! TrackController
+                vc.track = track
+            }
+        }
+    }
 }
 
 func printSongs(playlist: MPMediaItemCollection) {

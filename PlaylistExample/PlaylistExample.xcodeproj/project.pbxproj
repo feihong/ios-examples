@@ -17,6 +17,7 @@
 		A7D5AA6B1C45A681006FC8F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7D5AA691C45A681006FC8F9 /* LaunchScreen.storyboard */; };
 		A7D5AA761C45A681006FC8F9 /* PlaylistExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D5AA751C45A681006FC8F9 /* PlaylistExampleTests.swift */; };
 		A7D5AA811C45A681006FC8F9 /* PlaylistExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D5AA801C45A681006FC8F9 /* PlaylistExampleUITests.swift */; };
+		A7FBA5F81C51394B00D519FF /* TrackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7FBA5F71C51394B00D519FF /* TrackController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A7D5AA7C1C45A681006FC8F9 /* PlaylistExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlaylistExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D5AA801C45A681006FC8F9 /* PlaylistExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistExampleUITests.swift; sourceTree = "<group>"; };
 		A7D5AA821C45A681006FC8F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7FBA5F71C51394B00D519FF /* TrackController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				A756B1871C4FEC930053B246 /* Track.swift */,
 				A7D5AA621C45A681006FC8F9 /* MainController.swift */,
 				A756B1831C45F9540053B246 /* PlaylistController.swift */,
+				A7FBA5F71C51394B00D519FF /* TrackController.swift */,
 				A7D5AA641C45A681006FC8F9 /* Main.storyboard */,
 				A7D5AA671C45A681006FC8F9 /* Assets.xcassets */,
 				A7D5AA691C45A681006FC8F9 /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7D5AA631C45A681006FC8F9 /* MainController.swift in Sources */,
+				A7FBA5F81C51394B00D519FF /* TrackController.swift in Sources */,
 				A7D5AA611C45A681006FC8F9 /* AppDelegate.swift in Sources */,
 				A756B1841C45F9540053B246 /* PlaylistController.swift in Sources */,
 				A756B1861C4F514B0053B246 /* Playlist.swift in Sources */,
