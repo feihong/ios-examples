@@ -31,7 +31,7 @@ func getDurationString(interval: NSTimeInterval) -> String {
     let ti = NSInteger(interval)
     let seconds = ti % 60
     let minutes = (ti / 60)
-    return NSString(format: "%0.2d:%0.2d", minutes, seconds) as String
+    return NSString(format: "%.2d:%0.2d", minutes, seconds) as String
 }
 
 func getImage(artwork: MPMediaItemArtwork?) -> UIImage? {
