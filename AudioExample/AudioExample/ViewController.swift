@@ -3,7 +3,9 @@ import MediaPlayer
 import AVFoundation
 
 
-let songTitle = "动物"
+//let songTitle = "动物"
+let songTitle = "MAMA"
+
 
 let applicationPlayer = MPMusicPlayerController.applicationMusicPlayer()
 
