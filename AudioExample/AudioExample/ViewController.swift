@@ -41,9 +41,21 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    @IBAction func playUsingAVAudioPlayer(sender: UIButton) {
+    @IBAction func playUsingAVAudioPlayer() {
         guard let item = song else {return}
-        print("Asset URL: \(item.assetURL!)")
+//        print("Asset URL: \(item.assetURL!)")
+        playMediaItem(item)
+    }
+    
+    @IBAction func playUsingApplicationPlayer() {
+        guard let item = song else {return}
+        applicationPlayer.stop()
+        applicationPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: [item]))
+        applicationPlayer.prepareToPlay()
+        applicationPlayer.play()
+    }
+    
+    func playMediaItem(item: MPMediaItem) {
         guard let p = try? AVAudioPlayer(contentsOfURL: item.assetURL!) else {return}
         self.player = p
         p.prepareToPlay()
@@ -51,12 +63,9 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         p.play()
     }
     
-    @IBAction func playUsingApplicationPlayer(sender: UIButton) {
-        guard let item = song else {return}
-        applicationPlayer.stop()
-        applicationPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: [item]))
-        applicationPlayer.prepareToPlay()
-        applicationPlayer.play()
+    func playMediaItemWithTitle(songTitle: String) {
+        guard let item = getSong(songTitle) else {return}
+        playMediaItem(item)
     }
     
     func playbackStateChanged(notification: NSNotification) {
@@ -69,6 +78,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         print("\(NSDate()): Audio finished playing, successful: \(flag)")
+        playMediaItemWithTitle("Sweet Home Chicago")
     }
 }
 

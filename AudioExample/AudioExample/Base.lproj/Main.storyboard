@@ -21,14 +21,14 @@
                                 <rect key="frame" x="20" y="20" width="173" height="30"/>
                                 <state key="normal" title="Play using AVAudioPlayer"/>
                                 <connections>
-                                    <action selector="playUsingAVAudioPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vFE-SX-wSc"/>
+                                    <action selector="playUsingAVAudioPlayer" destination="BYZ-38-t0r" eventType="touchUpInside" id="oc6-bp-mex"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ae3-AU-L7P">
                                 <rect key="frame" x="20" y="58" width="195" height="30"/>
                                 <state key="normal" title="Play using application player"/>
                                 <connections>
-                                    <action selector="playUsingApplicationPlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Nm-Zy-T5j"/>
+                                    <action selector="playUsingApplicationPlayer" destination="BYZ-38-t0r" eventType="touchUpInside" id="eTM-yI-Mjk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXi-3N-1xd">
