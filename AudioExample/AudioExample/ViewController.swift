@@ -3,8 +3,8 @@ import MediaPlayer
 import AVFoundation
 
 
-//let songTitle = "动物"
-let songTitle = "MAMA"
+let songTitle = "动物"
+//let songTitle = "MAMA"
 
 
 let applicationPlayer = MPMusicPlayerController.applicationMusicPlayer()
@@ -19,6 +19,20 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     
         song = getSong(songTitle)
         printSong()
+        
+        applicationPlayer.beginGeneratingPlaybackNotifications()
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "playbackStateChanged:",
+            name: MPMusicPlayerControllerPlaybackStateDidChangeNotification,
+            object: applicationPlayer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: "nowPlayingItemChanged:",
+            name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification,
+            object: applicationPlayer)
     }
     
     @IBAction func printSong() {
@@ -45,8 +59,16 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
         applicationPlayer.play()
     }
     
+    func playbackStateChanged(notification: NSNotification) {
+        print("\(NSDate()): Playback state changed to \(applicationPlayer.playbackState.rawValue)")
+    }
+    
+    func nowPlayingItemChanged(notification: NSNotification) {
+        print("\(NSDate()): Now playing item changed to \(applicationPlayer.nowPlayingItem)")
+    }
+    
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
-        print("Audio finished playing, successful: \(flag)")
+        print("\(NSDate()): Audio finished playing, successful: \(flag)")
     }
 }
 
