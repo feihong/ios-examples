@@ -4,20 +4,19 @@ import AVFoundation
 
 
 let songTitle = "动物"
-//let songTitle = "MAMA"
+let songTitle2 = "Sweet Home Chicago"
 
 
 let applicationPlayer = MPMusicPlayerController.applicationMusicPlayer()
 
 
 class ViewController: UIViewController, AVAudioPlayerDelegate {
-    var song: MPMediaItem? = nil
-    var player: AVAudioPlayer? = nil
+    var player: AVAudioPlayer!
+    var queuePlayer: AVQueuePlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        song = getSong(songTitle)
         printSong()
         
         applicationPlayer.beginGeneratingPlaybackNotifications()
@@ -36,19 +35,29 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func printSong() {
-        if let song = song {
+        if let song = getSong(songTitle) {
             print("\(song.title!) - \(song.lastPlayedDate!)")
         }
     }
     
     @IBAction func playUsingAVAudioPlayer() {
-        guard let item = song else {return}
+        guard let item = getSong(songTitle) else {return}
 //        print("Asset URL: \(item.assetURL!)")
         playMediaItem(item)
     }
     
+    @IBAction func playUsingQueuePlayer() {
+        let items: [AVPlayerItem] = [songTitle, songTitle2].map { title in
+            let item = getSong(title)!
+            return AVPlayerItem(URL: item.assetURL!)
+        }
+        queuePlayer = AVQueuePlayer(items: items)
+        queuePlayer.actionAtItemEnd = .Advance
+        queuePlayer.play()
+    }
+    
     @IBAction func playUsingApplicationPlayer() {
-        guard let item = song else {return}
+        guard let item = getSong(songTitle) else {return}
         applicationPlayer.stop()
         applicationPlayer.setQueueWithItemCollection(MPMediaItemCollection(items: [item]))
         applicationPlayer.prepareToPlay()
@@ -78,7 +87,8 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         print("\(NSDate()): Audio finished playing, successful: \(flag)")
-        playMediaItemWithTitle("Sweet Home Chicago")
+        // Will not work if app is in the background.
+        playMediaItemWithTitle(songTitle2)
     }
 }
 
